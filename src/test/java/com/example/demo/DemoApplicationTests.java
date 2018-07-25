@@ -92,4 +92,18 @@ public class DemoApplicationTests {
 
     }
 
+    @Test
+    public void calculateVolumeTest() throws Exception {
+
+        RequestBuilder rq = MockMvcRequestBuilders.post("/math/volume/3/4/5");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 3 x 4 x 5 rectangle is 60"));
+
+        rq = MockMvcRequestBuilders.get("/math/volume/5/6/7");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 5 x 6 x 7 rectangle is 210"));
+    }
+
 }

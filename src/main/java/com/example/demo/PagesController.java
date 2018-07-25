@@ -2,10 +2,7 @@ package com.example.demo;
 
 
 import com.example.demo.model.MathService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -44,5 +41,10 @@ public class PagesController {
             sum = mathService.sum(sum, intX);
         }
         return sum;
+    }
+
+    @RequestMapping("/math/volume/{length}/{breadth}/{height}")
+    public String calculateVolume(@PathVariable int length, @PathVariable int breadth, @PathVariable int height){
+        return String.format("The volume of a %d x %d x %d rectangle is %d", length, breadth, height, length * breadth * height);
     }
 }
