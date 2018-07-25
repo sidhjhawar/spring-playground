@@ -38,4 +38,58 @@ public class DemoApplicationTests {
                 .andExpect(content().string("3.141592653589793"));
     }
 
+    @Test
+    public void addTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.get("/math/calculate?operation=add&x=4&y=6");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("10"));
+
+    }
+
+    @Test
+    public void subtractTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.get("/math/calculate?operation=subtract&x=6&y=2");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("4"));
+
+    }
+
+    @Test
+    public void multiplyTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.get("/math/calculate?operation=multiply&x=6&y=2");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("12"));
+
+    }
+
+    @Test
+    public void divideTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.get("/math/calculate?operation=divide&x=6&y=2");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("3"));
+
+    }
+
+    @Test
+    public void defaultAsAddTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.get("/math/calculate?x=6&y=2");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("8"));
+
+    }
+
+    @Test
+    public void sumTest() throws Exception {
+        RequestBuilder rq = MockMvcRequestBuilders.post("/math/sum?x=6&y=2&z=10&w=12");
+        mvc.perform(rq)
+                .andExpect(status().isOk())
+                .andExpect(content().string("30"));
+
+    }
+
 }
