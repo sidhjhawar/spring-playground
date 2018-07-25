@@ -47,4 +47,11 @@ public class PagesController {
     public String calculateVolume(@PathVariable int length, @PathVariable int breadth, @PathVariable int height){
         return String.format("The volume of a %d x %d x %d rectangle is %d", length, breadth, height, length * breadth * height);
     }
+
+    @PostMapping("/math/area")
+    public String calculateArea(@RequestParam Map bodyParam) {
+        MathService mathService =  new MathService();
+        return mathService.calculateArea(bodyParam, renderPi());
+        }
+
 }
