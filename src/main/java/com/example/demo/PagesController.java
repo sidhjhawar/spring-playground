@@ -2,6 +2,7 @@ package com.example.demo;
 
 
 import com.example.demo.model.MathService;
+import com.example.demo.model.Area;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -49,9 +50,15 @@ public class PagesController {
     }
 
     @PostMapping("/math/area")
-    public String calculateArea(@RequestParam Map bodyParam) {
-        MathService mathService =  new MathService();
-        return mathService.calculateArea(bodyParam, renderPi());
+    public String calculateArea(Area area) {
+        if ("circle".equalsIgnoreCase(area.getType()) && area.getRadius() != 0) {
+            return String.format("Area of a circle with a radius of %d is %.4f", area.getRadius(),
+                    area.getRadius() * Double.parseDouble(renderPi()));
+        } else if ("rectangle".equalsIgnoreCase(area.getType()) && area.getWidth() != 0 && area.getHeight() != 0) {
+            return String.format("Area of a %d x %d rectangle is %d", area.getWidth(), area.getHeight(),
+                    area.getWidth() * area.getHeight());
         }
+        return "Invalid";
+    }
 
 }
