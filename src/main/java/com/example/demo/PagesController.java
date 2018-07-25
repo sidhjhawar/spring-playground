@@ -11,4 +11,9 @@ public class PagesController {
     public String hello(){
         return "Hello from CNE training class!!!";
     }
+
+    @GetMapping("/math/pi")
+    public String renderPi(){
+        return "3.141592653589793";
+    }
 }
