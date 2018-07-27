@@ -2,14 +2,10 @@ package com.example.demo;
 
 
 import com.example.demo.model.Flight;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/flights")
@@ -64,6 +60,20 @@ public class FlightController {
         britishAirways.setTickets(Arrays.asList(ticket));
 
         return britishAirways;
+    }
+
+    @PostMapping("/tickets/total")
+    public String calculateTotal(@RequestBody Flight flight) throws Exception{
+        int ticketsCount = flight.getTickets().size();
+        int sum = 0;
+        ObjectMapper objectMapper = new ObjectMapper();
+        for(int i = 0 ;i < ticketsCount; i++){
+            sum+=  Integer.parseInt(flight.getTickets().get(i).getPrice());
+        }
+
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("result", sum);
+        return objectMapper.writeValueAsString(data);
     }
 
 
