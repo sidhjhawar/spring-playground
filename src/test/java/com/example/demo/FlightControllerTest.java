@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.controller.FlightController;
 import com.example.demo.model.Flight;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.core.Is;
@@ -16,10 +17,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(FlightController.class)
