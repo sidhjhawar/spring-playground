@@ -5,6 +5,8 @@ import com.example.demo.crud.LessonRepository;
 import com.example.demo.model.Lesson;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/lessons")
 public class LessonsController {
@@ -20,9 +22,19 @@ public class LessonsController {
         return this.repository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Lesson> lesson(@PathVariable Long id) {
+        return this.repository.findById(id);
+    }
+
     @PostMapping("")
     public Lesson create(@RequestBody Lesson lesson) {
         return this.repository.save(lesson);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteLesson(@PathVariable Long id) {
+        this.repository.deleteById(id);
     }
 
 }
