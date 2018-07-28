@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import com.example.demo.controller.FlightController;
 import com.example.demo.model.Flight;

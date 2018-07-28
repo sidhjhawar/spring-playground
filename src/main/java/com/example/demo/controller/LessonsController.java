@@ -32,9 +32,10 @@ public class LessonsController {
         return this.repository.save(lesson);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteLesson(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public String deleteLesson(@PathVariable Long id) {
         this.repository.deleteById(id);
+        return "Hello";
     }
 
 }
