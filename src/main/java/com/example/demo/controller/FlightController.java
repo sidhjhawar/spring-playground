@@ -13,7 +13,7 @@ public class FlightController {
 
     @GetMapping("")
     public List<Flight> flights() {
-        List<Flight> flights =  new ArrayList<>();
+        List<Flight> flights = new ArrayList<>();
         Flight britishAirways = new Flight();
 
         Flight.Person person = new Flight.Person();
@@ -28,7 +28,7 @@ public class FlightController {
         flights.add(britishAirways);
 
 
-        Flight lufthansa =  new Flight();
+        Flight lufthansa = new Flight();
 
         Flight.Person person1 = new Flight.Person();
         person1.setFirstName("Jane");
@@ -63,12 +63,12 @@ public class FlightController {
     }
 
     @PostMapping("/tickets/total")
-    public String calculateTotal(@RequestBody Flight flight) throws Exception{
+    public String calculateTotal(@RequestBody Flight flight) throws Exception {
         int ticketsCount = flight.getTickets().size();
         int sum = 0;
         ObjectMapper objectMapper = new ObjectMapper();
-        for(int i = 0 ;i < ticketsCount; i++){
-            sum+=  Integer.parseInt(flight.getTickets().get(i).getPrice());
+        for (int i = 0; i < ticketsCount; i++) {
+            sum += Integer.parseInt(flight.getTickets().get(i).getPrice());
         }
 
         HashMap<String, Object> data = new HashMap<>();

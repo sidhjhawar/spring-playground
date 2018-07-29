@@ -38,11 +38,11 @@ public class PatchLessonTest {
     Lesson lesson, lesson1;
 
     @Before
-    public void setUp()  {
-        lesson =  new Lesson();
+    public void setUp() {
+        lesson = new Lesson();
         lesson.setDeliveredOn(new Date());
         lesson.setTitle("Learning Spring");
-        lesson1 =  new Lesson();
+        lesson1 = new Lesson();
         lesson1.setDeliveredOn(new Date());
         lesson1.setTitle("Learning Java");
         lessonRepository.save(lesson);
@@ -59,10 +59,10 @@ public class PatchLessonTest {
     @Transactional
     @Rollback
     public void patchLessonTest() throws Exception {
-        lesson =  new Lesson();
+        lesson = new Lesson();
         lesson.setDeliveredOn(new Date());
         lesson.setTitle("Learning Spring");
-        lesson1 =  new Lesson();
+        lesson1 = new Lesson();
         lesson1.setDeliveredOn(new Date());
         lesson1.setTitle("Learning Java");
         lessonRepository.save(lesson);
@@ -72,7 +72,7 @@ public class PatchLessonTest {
         Iterable<Lesson> all = lessonRepository.findAll();
         Iterator i = all.iterator();
         Lesson l = (Lesson) i.next();
-        ObjectMapper mapper =  new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.patch(String.format("/lessons/%d", l.getId()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(lesson3));
