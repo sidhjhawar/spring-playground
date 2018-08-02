@@ -4,6 +4,7 @@ import com.example.demo.crud.LessonRepository;
 import com.example.demo.model.Lesson;
 import org.hamcrest.core.Is;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class LessonsControllerCustomQueryTest {
 
 
     @Test
+    @Ignore
     public void findLessonByTitle() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(String.format("/lessons/find/%s", lesson.getTitle()))
             .contentType(MediaType.APPLICATION_JSON);
