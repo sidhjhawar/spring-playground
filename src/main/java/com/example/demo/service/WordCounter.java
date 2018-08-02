@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
-
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+@Configuration
 public class WordCounter {
 
     public Map<String, Integer> count(String input) {
