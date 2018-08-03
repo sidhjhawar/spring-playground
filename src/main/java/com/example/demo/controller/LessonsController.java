@@ -56,8 +56,7 @@ public class LessonsController {
 
     @GetMapping("/find/{title}")
     public Lesson findLessonByTitle(@PathVariable String title) {
-        Lesson lessonFound = this.repository.findByTitle(title);
-        return lessonFound;
+        return this.repository.findFirstByTitle(title);
     }
 
     @GetMapping("/between")

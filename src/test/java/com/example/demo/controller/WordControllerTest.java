@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.config.WordConfig;
 import com.example.demo.service.WordCounter;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -49,4 +49,5 @@ public class WordControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.how", Is.is(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.now", Is.is(1)));
     }
+
 }

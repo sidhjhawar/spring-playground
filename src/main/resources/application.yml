@@ -1,0 +1,7 @@
+wordCount:
+      words:
+        skip:
+        - 'the'
+        - 'an'
+        - 'a'
+      caseSensitive: false

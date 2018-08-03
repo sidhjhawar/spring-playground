@@ -7,6 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface LessonRepository extends CrudRepository<Lesson, Long> {
-    Lesson findByTitle(String title);
+    Lesson findFirstByTitle(String title);
     List<Lesson> findByDeliveredOnBetween(Date deliveredOn1, Date deliveredOn2);
 }

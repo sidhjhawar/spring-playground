@@ -48,7 +48,6 @@ public class LessonsControllerCustomQueryTest {
 
 
     @Test
-    @Ignore
     public void findLessonByTitle() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(String.format("/lessons/find/%s", lesson.getTitle()))
             .contentType(MediaType.APPLICATION_JSON);
