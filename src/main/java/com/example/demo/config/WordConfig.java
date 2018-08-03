@@ -10,8 +10,17 @@ import java.util.List;
 @Component
 public class WordConfig {
 
-    public boolean caseSensitive;
-    public Words words;
+    private boolean caseSensitive;
+    private Words words;
+    private String pattern;
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
 
     public boolean isCaseSensitive() {
         return caseSensitive;

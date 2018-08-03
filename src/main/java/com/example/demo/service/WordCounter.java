@@ -14,7 +14,7 @@ public class WordCounter {
     private WordConfig wordConfig;
 
     public Map<String, Integer> count(String input) {
-        String pattern = "[\\p{Punct}\\s]+";
+        String pattern = wordConfig.getPattern();
         Map<String, Integer> wordCountMap = new HashMap<>();
         String[] splitString = input.split(pattern);
         for (String s : splitString) {
@@ -22,7 +22,7 @@ public class WordCounter {
             if (!wordConfig.isCaseSensitive()) {
                 lowerCaseString = s.toLowerCase();
             }
-            if (!wordConfig.words.getSkip().contains(lowerCaseString)) {
+            if (!wordConfig.getWords().getSkip().contains(lowerCaseString)) {
                 if (wordCountMap.containsKey(lowerCaseString)) {
                     int value = wordCountMap.get(lowerCaseString);
                     wordCountMap.put(lowerCaseString, ++value);
