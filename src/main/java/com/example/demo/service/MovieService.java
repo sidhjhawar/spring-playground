@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.config.MovieConfig;
 import com.example.demo.model.MovieWrapper;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -16,8 +17,18 @@ public class MovieService {
 
     private final RestTemplate restTemplate =  new RestTemplate();
 
+    private MovieConfig movieConfig;
+
+    public MovieService(MovieConfig movieConfig) {
+        this.movieConfig = movieConfig;
+    }
+
+    public RestTemplate getRestTemplate() {
+        return this.restTemplate;
+    }
+
     public MovieWrapper getMovies(String titleString) throws IOException {
-        URI uri =  new UriTemplate("http://www.omdbapi.com/?s={title}&apikey=ed6b8b87").expand(titleString);
+        URI uri =  new UriTemplate("{host}/?s={title}&apikey={apikey}").expand(movieConfig.getUrl(),titleString, movieConfig.getApikey());
 
         RequestEntity request = RequestEntity
                 .get(uri)

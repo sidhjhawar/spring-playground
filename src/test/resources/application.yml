@@ -6,3 +6,7 @@ wordCount:
         - 'a'
       caseSensitive: false
       pattern: "[\\p{Punct}\\s]+"
+
+movie:
+      url: "http://www.omdbapi.com"
+      apikey: "ed6b8b87"

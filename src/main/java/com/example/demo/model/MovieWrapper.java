@@ -10,8 +10,8 @@ public class MovieWrapper {
 
     private String totalResults;
 
-//    @JsonIgnore
-//    private String response;
+    @JsonProperty("Response")
+    private String response;
 
     @JsonProperty("Search")
     public List<Movie> getSearch() {
@@ -33,15 +33,13 @@ public class MovieWrapper {
         this.totalResults = totalResults;
     }
 
-//    @JsonIgnore
-//    @JsonProperty("Response")
-//    public String getResponse() {
-//        return response;
-//    }
-//
-//    @JsonIgnore
-//    @JsonProperty("Response")
-//    public void setResponse(String response) {
-//        this.response = response;
-//    }
+    @JsonIgnore
+    public String getResponse() {
+        return response;
+    }
+
+    @JsonIgnore
+    public void setResponse(String response) {
+        this.response = response;
+    }
 }
