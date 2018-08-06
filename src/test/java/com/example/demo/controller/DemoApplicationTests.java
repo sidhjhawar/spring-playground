@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.controller.PagesController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
