@@ -22,7 +22,7 @@ import java.util.Map;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(secure = false)
 public class WordControllerTest {
 
     @Autowired

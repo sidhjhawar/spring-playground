@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(secure = false)
 public class WordCounterTest {
 
     @Autowired

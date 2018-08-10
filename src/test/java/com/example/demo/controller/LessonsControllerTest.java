@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(secure = false)
 @RunWith(SpringRunner.class)
 public class LessonsControllerTest {
 

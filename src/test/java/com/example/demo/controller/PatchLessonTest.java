@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(secure = false)
 @RunWith(SpringRunner.class)
 public class PatchLessonTest {
 

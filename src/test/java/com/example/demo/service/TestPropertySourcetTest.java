@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(secure = false)
 @TestPropertySource(properties = {
         "wordCount.caseSensitive=true",
         "wordCount.words.skip[0]=Hello",
