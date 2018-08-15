@@ -29,7 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().mvcMatchers("/flights/**", "/math/**", "/lessons/**","/words/**").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().mvcMatchers("/admin/**").access("hasRole('MANAGER')");
+        http.authorizeRequests().mvcMatchers("/employees").hasAnyRole("MANAGER", "EMPLOYEE");
     }
 
 }
