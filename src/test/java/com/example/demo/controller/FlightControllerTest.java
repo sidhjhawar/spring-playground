@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.controller.FlightController;
 import com.example.demo.model.Flight;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.core.Is;
