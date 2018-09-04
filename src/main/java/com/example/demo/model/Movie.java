@@ -1,31 +1,32 @@
 package com.example.demo.model;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Movie {
 
-    @JsonProperty("Title")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long movieId;
     private String title;
 
-    @JsonProperty("imdbID")
-    private String imdbId;
-
-    @JsonProperty("Poster")
-    private String poster;
-
-    @JsonProperty("Year")
-    private String year;
-
-    @JsonProperty("Type")
-    private String type;
-
-    public String getType() {
-        return type;
+    public Movie(String title) {
+        this.title = title;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public Movie() {
+    }
+
+    public Long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
@@ -34,29 +35,5 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getImdbId() {
-        return imdbId;
-    }
-
-    public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
     }
 }

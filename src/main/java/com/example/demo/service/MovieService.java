@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.config.MovieConfig;
+import com.example.demo.model.Movie;
 import com.example.demo.model.MovieWrapper;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,8 @@ import org.springframework.web.util.UriTemplate;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -41,5 +45,13 @@ public class MovieService {
         );
 
         return (MovieWrapper) response.getBody();
+    }
+
+    public List<Resource<Movie>> getAllMovies(Iterable<Movie> all, MovieAssembler assembler) {
+        List<Resource<Movie>> movieResource = new ArrayList<>();
+        all.forEach(m -> {
+            movieResource.add(assembler.toResource(m));
+        });
+        return  movieResource;
     }
 }

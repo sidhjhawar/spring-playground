@@ -1,26 +1,37 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.crud.IMovieRepository;
 import com.example.demo.model.Movie;
+import com.example.demo.service.MovieAssembler;
 import com.example.demo.service.MovieService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.hateoas.Resource;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/movies")
 public class MovieController {
 
-    @Autowired
-    private MovieService movieService;
+    private final IMovieRepository repository;
+    private final MovieAssembler assembler;
+    private final MovieService service;
 
-    @GetMapping("/movies")
-    public List<Movie> getMovie(@RequestParam String movie) throws IOException {
-        ObjectMapper mapper =  new ObjectMapper();
-        return movieService.getMovies(movie).getSearch();
+    public MovieController(IMovieRepository repository, MovieAssembler assembler, MovieService service) {
+        this.repository = repository;
+        this.assembler = assembler;
+        this.service = service;
+    }
+
+    @GetMapping("")
+    public List<Resource<Movie>> all() {
+        return service.getAllMovies(this.repository.findAll(),assembler);
+    }
+
+    @GetMapping("/{id}")
+    public Resource<Movie> getMovieById(@PathVariable Long id) {
+        return assembler.toResource(this.repository.findByMovieId(id));
     }
 }
+
