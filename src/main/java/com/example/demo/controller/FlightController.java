@@ -20,7 +20,7 @@ public class FlightController {
         person.setFirstName("John");
         person.setLastName("Doe");
         Flight.Ticket ticket = new Flight.Ticket();
-        ticket.setPrice("1000");
+        ticket.setPrice("5000");
         ticket.setPassenger(person);
         britishAirways.setTickets(Arrays.asList(ticket));
 
